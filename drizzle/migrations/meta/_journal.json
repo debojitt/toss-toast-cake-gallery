@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794751105152,
+      "tag": "0000_create_toss_toast_catalog_and_birthday_links",
+      "breakpoints": true
+    }
+  ]
 }

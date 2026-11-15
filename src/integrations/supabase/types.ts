@@ -14,7 +14,74 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      birthday_links: {
+        Row: {
+          cake_id: string | null
+          created_at: string
+          game_answer: string | null
+          id: string
+          played_at: string | null
+          recipient_name: string
+          relationship: string
+          sender_name: string
+          slug: string
+        }
+        Insert: {
+          cake_id?: string | null
+          created_at?: string
+          game_answer?: string | null
+          id?: string
+          played_at?: string | null
+          recipient_name: string
+          relationship: string
+          sender_name: string
+          slug: string
+        }
+        Update: {
+          cake_id?: string | null
+          created_at?: string
+          game_answer?: string | null
+          id?: string
+          played_at?: string | null
+          recipient_name?: string
+          relationship?: string
+          sender_name?: string
+          slug?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "birthday_links_cake_id_fkey"
+            columns: ["cake_id"]
+            isOneToOne: false
+            referencedRelation: "cake_images"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      cake_images: {
+        Row: {
+          created_at: string
+          id: string
+          is_featured: boolean
+          sort_order: number
+          storage_path: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_featured?: boolean
+          sort_order?: number
+          storage_path: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_featured?: boolean
+          sort_order?: number
+          storage_path?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
