@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794751105152,
+      "tag": "0000_create_toss_toast_catalog_and_birthday_links",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794751220330,
+      "tag": "0001_secure_cake_uploads_and_birthday_gifts",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794751385284,
+      "tag": "0002_protect_cake_password_attempts",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794751491645,
+      "tag": "0003_secure_cake_photo_removal",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794751626245,
+      "tag": "0004_owner_tools_for_cakes_and_birthday_links",
+      "breakpoints": true
+    }
+  ]
+}
