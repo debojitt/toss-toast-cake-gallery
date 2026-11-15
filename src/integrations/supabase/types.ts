@@ -58,6 +58,21 @@ export type Database = {
           },
         ]
       }
+      cake_delete_reservations: {
+        Row: {
+          expires_at: string
+          storage_path: string
+        }
+        Insert: {
+          expires_at: string
+          storage_path: string
+        }
+        Update: {
+          expires_at?: string
+          storage_path?: string
+        }
+        Relationships: []
+      }
       cake_images: {
         Row: {
           created_at: string
@@ -165,6 +180,10 @@ export type Database = {
       }
       record_birthday_answer: {
         Args: { _answer: string; _slug: string }
+        Returns: boolean
+      }
+      reserve_cake_delete: {
+        Args: { _password: string; _storage_path: string }
         Returns: boolean
       }
       reserve_cake_upload: {

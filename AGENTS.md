@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Application architecture
+
+- Keep cake photos and birthday wishes in Lovable Cloud; public reads use narrow RLS/RPC access, while every owner-only cake mutation validates the shared password server-side and never persists it in browser storage. This keeps the public catalogue shareable without exposing management controls.
