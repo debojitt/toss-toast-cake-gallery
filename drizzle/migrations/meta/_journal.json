@@ -29,6 +29,13 @@
       "when": 1794751491645,
       "tag": "0003_secure_cake_photo_removal",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794751626245,
+      "tag": "0004_owner_tools_for_cakes_and_birthday_links",
+      "breakpoints": true
     }
   ]
 }

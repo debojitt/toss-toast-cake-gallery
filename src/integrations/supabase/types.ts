@@ -170,6 +170,16 @@ export type Database = {
         Args: { _cake_id: string; _password: string }
         Returns: boolean
       }
+      list_birthday_links: {
+        Args: { _password: string }
+        Returns: {
+          created_at: string
+          recipient_name: string
+          relationship: string
+          sender_name: string
+          slug: string
+        }[]
+      }
       publish_cake_upload: {
         Args: {
           _is_featured?: boolean
@@ -188,6 +198,10 @@ export type Database = {
       }
       reserve_cake_upload: {
         Args: { _password: string; _storage_path: string }
+        Returns: boolean
+      }
+      set_cake_featured: {
+        Args: { _cake_id: string; _is_featured: boolean; _password: string }
         Returns: boolean
       }
     }
