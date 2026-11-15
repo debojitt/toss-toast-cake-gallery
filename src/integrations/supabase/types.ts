@@ -62,6 +62,7 @@ export type Database = {
         Row: {
           created_at: string
           id: string
+          is_active: boolean
           is_featured: boolean
           sort_order: number
           storage_path: string
@@ -69,6 +70,7 @@ export type Database = {
         Insert: {
           created_at?: string
           id?: string
+          is_active?: boolean
           is_featured?: boolean
           sort_order?: number
           storage_path: string
@@ -76,9 +78,40 @@ export type Database = {
         Update: {
           created_at?: string
           id?: string
+          is_active?: boolean
           is_featured?: boolean
           sort_order?: number
           storage_path?: string
+        }
+        Relationships: []
+      }
+      cake_upload_reservations: {
+        Row: {
+          expires_at: string
+          storage_path: string
+        }
+        Insert: {
+          expires_at: string
+          storage_path: string
+        }
+        Update: {
+          expires_at?: string
+          storage_path?: string
+        }
+        Relationships: []
+      }
+      shop_access_config: {
+        Row: {
+          id: number
+          password_hash: string
+        }
+        Insert: {
+          id?: number
+          password_hash: string
+        }
+        Update: {
+          id?: number
+          password_hash?: string
         }
         Relationships: []
       }
@@ -87,7 +120,51 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      cake_password_is_valid: { Args: { _password: string }; Returns: boolean }
+      cake_upload_is_reserved: {
+        Args: { _storage_path: string }
+        Returns: boolean
+      }
+      create_birthday_link: {
+        Args: {
+          _cake_id?: string
+          _recipient_name: string
+          _relationship: string
+          _sender_name: string
+        }
+        Returns: string
+      }
+      get_birthday_link: {
+        Args: { _slug: string }
+        Returns: {
+          cake_path: string
+          game_answer: string
+          played_at: string
+          recipient_name: string
+          relationship: string
+          sender_name: string
+        }[]
+      }
+      hide_cake: {
+        Args: { _cake_id: string; _password: string }
+        Returns: boolean
+      }
+      publish_cake_upload: {
+        Args: {
+          _is_featured?: boolean
+          _password: string
+          _storage_path: string
+        }
+        Returns: string
+      }
+      record_birthday_answer: {
+        Args: { _answer: string; _slug: string }
+        Returns: boolean
+      }
+      reserve_cake_upload: {
+        Args: { _password: string; _storage_path: string }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
