@@ -102,15 +102,21 @@ export type Database = {
       }
       shop_access_config: {
         Row: {
+          failed_attempts: number
           id: number
+          locked_until: string | null
           password_hash: string
         }
         Insert: {
+          failed_attempts?: number
           id?: number
+          locked_until?: string | null
           password_hash: string
         }
         Update: {
+          failed_attempts?: number
           id?: number
+          locked_until?: string | null
           password_hash?: string
         }
         Relationships: []
