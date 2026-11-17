@@ -1,42 +1,15 @@
-/*
- * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
- * - Keep every @import in this top block, above @theme and the rest of the file. Install an
- *   npm package before @importing its CSS. Never @import a remote URL (web fonts, CDN CSS): the
- *   build resolves @import from the filesystem. Load those with a <link> in the head() of
- *   src/routes/__root.tsx and name the family in a --font-* token in @theme inline below.
- */
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The design lives in this file: oklch color tokens on the shadcn variables
- * (--background, --foreground, --primary, --secondary, --muted, --accent, ...) plus
- * new tokens as needed, font tokens, and custom styles and animations.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
-
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 3px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -70,77 +43,82 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-tomato: var(--tomato);
+  --color-cream: var(--cream);
+  --color-butter: var(--butter);
+  --color-leaf: var(--leaf);
+  --color-rose: var(--rose);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --radius: 0.375rem;
+  --tomato: oklch(0.57 0.205 35);
+  --cream: oklch(0.97 0.034 88);
+  --butter: oklch(0.92 0.105 91);
+  --leaf: oklch(0.72 0.09 145);
+  --rose: oklch(0.86 0.075 25);
+  --background: oklch(0.985 0.016 88);
+  --foreground: oklch(0.27 0.06 35);
+  --card: oklch(0.997 0.009 90);
+  --card-foreground: oklch(0.27 0.06 35);
+  --popover: oklch(0.997 0.009 90);
+  --popover-foreground: oklch(0.27 0.06 35);
+  --primary: var(--tomato);
+  --primary-foreground: oklch(0.99 0.018 89);
+  --secondary: oklch(0.94 0.04 88);
+  --secondary-foreground: oklch(0.35 0.08 35);
+  --muted: oklch(0.95 0.025 87);
+  --muted-foreground: oklch(0.53 0.035 45);
+  --accent: oklch(0.92 0.055 78);
+  --accent-foreground: oklch(0.33 0.07 35);
+  --destructive: oklch(0.56 0.22 26);
+  --destructive-foreground: oklch(0.99 0.018 89);
+  --border: oklch(0.89 0.035 79);
+  --input: oklch(0.89 0.035 79);
+  --ring: oklch(0.64 0.16 36);
+  --chart-1: var(--tomato);
+  --chart-2: var(--leaf);
+  --chart-3: oklch(0.67 0.12 235);
+  --chart-4: var(--butter);
+  --chart-5: var(--rose);
+  --sidebar: var(--cream);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--tomato);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--butter);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --background: oklch(0.22 0.035 35);
+  --foreground: oklch(0.96 0.025 88);
+  --card: oklch(0.27 0.038 35);
+  --card-foreground: oklch(0.96 0.025 88);
+  --popover: oklch(0.27 0.038 35);
+  --popover-foreground: oklch(0.96 0.025 88);
+  --primary: oklch(0.69 0.18 38);
+  --primary-foreground: oklch(0.99 0.018 89);
+  --secondary: oklch(0.34 0.04 35);
+  --secondary-foreground: oklch(0.96 0.025 88);
+  --muted: oklch(0.34 0.04 35);
+  --muted-foreground: oklch(0.78 0.035 78);
+  --accent: oklch(0.38 0.06 35);
+  --accent-foreground: oklch(0.96 0.025 88);
+  --destructive: oklch(0.62 0.21 26);
+  --destructive-foreground: oklch(0.99 0.018 89);
+  --border: oklch(0.42 0.035 42);
+  --input: oklch(0.42 0.035 42);
+  --ring: oklch(0.69 0.18 38);
+  --sidebar: oklch(0.27 0.038 35);
+  --sidebar-foreground: oklch(0.96 0.025 88);
+  --sidebar-primary: oklch(0.69 0.18 38);
+  --sidebar-primary-foreground: oklch(0.99 0.018 89);
+  --sidebar-accent: oklch(0.38 0.06 35);
+  --sidebar-accent-foreground: oklch(0.96 0.025 88);
+  --sidebar-border: oklch(0.42 0.035 42);
+  --sidebar-ring: oklch(0.69 0.18 38);
 }
 
 @layer base {
@@ -151,5 +129,277 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
   }
+}
+
+html { scroll-behavior: smooth; }
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { background: var(--butter); color: var(--foreground); }
+
+.shop-shell { overflow: hidden; }
+.shop-header { height: 84px; padding: 0 clamp(20px, 5vw, 76px); display: flex; align-items: center; justify-content: space-between; gap: 24px; background: var(--cream); }
+.shop-brand { position: relative; display: flex; align-items: center; width: 130px; height: 76px; }
+.shop-brand img { width: 104px; height: 70px; object-fit: contain; mix-blend-mode: multiply; }
+.shop-brand-caption { position: absolute; bottom: 1px; left: 2px; color: var(--tomato); font-size: 7px; font-weight: 800; letter-spacing: 1.2px; white-space: nowrap; }
+.shop-nav { display: flex; align-items: center; gap: clamp(16px, 3.2vw, 48px); color: var(--foreground); font-size: 12px; font-weight: 700; }
+.shop-nav a, .shop-footer a { text-decoration: none; transition: color 180ms ease; }
+.shop-nav a:hover, .shop-footer a:hover { color: var(--tomato); }
+.shop-nav-whatsapp { display: flex; align-items: center; gap: 8px; color: var(--tomato); }
+.owner-trigger { color: var(--tomato); }
+.cake-hero { position: relative; isolation: isolate; min-height: clamp(480px, 48vw, 650px); display: flex; align-items: center; padding: 72px clamp(24px, 9vw, 140px); color: var(--cream); background: var(--foreground); }
+.cake-hero-photo, .cake-hero-shade { position: absolute; z-index: -1; inset: 0; width: 100%; height: 100%; }
+.cake-hero-photo { object-fit: cover; object-position: center 52%; }
+.cake-hero-shade { background: linear-gradient(90deg, color-mix(in oklab, var(--foreground) 84%, transparent) 0%, color-mix(in oklab, var(--foreground) 58%, transparent) 42%, color-mix(in oklab, var(--foreground) 5%, transparent) 100%); }
+.cake-hero-copy { max-width: 530px; animation: rise-in 650ms ease both; }
+.eyebrow { display: inline-flex; align-items: center; gap: 7px; color: var(--tomato); font-size: 9px; font-weight: 800; letter-spacing: 1.7px; }
+.cake-hero .eyebrow { color: var(--butter); }
+.cake-hero h1, .birthday-copy h2 { margin: 20px 0 13px; font-family: var(--font-display); font-size: clamp(46px, 6vw, 78px); font-weight: 600; line-height: .99; letter-spacing: 0; }
+.cake-hero-copy p { max-width: 370px; color: color-mix(in oklab, var(--cream) 87%, transparent); font-size: 14px; line-height: 1.75; }
+.hero-actions { display: flex; align-items: center; gap: 22px; margin-top: 30px; }
+.hero-cta { min-height: 46px; padding: 0 20px; background: var(--tomato); color: var(--primary-foreground); box-shadow: 0 10px 26px color-mix(in oklab, var(--tomato) 22%, transparent); }
+.hero-cta:hover { background: color-mix(in oklab, var(--tomato) 90%, var(--foreground)); }
+.hero-cta a, .dialog-whatsapp a, .birthday-share a { display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; }
+.hero-whatsapp { display: inline-flex; align-items: center; gap: 8px; color: var(--cream); font-size: 12px; font-weight: 700; text-decoration: none; }
+.hero-whatsapp:hover { color: var(--butter); }
+.hero-sticker { position: absolute; right: clamp(25px, 10vw, 150px); bottom: 78px; width: 126px; height: 126px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; border: 1px solid color-mix(in oklab, var(--cream) 58%, transparent); border-radius: 50%; color: var(--cream); text-align: center; transform: rotate(9deg); animation: float-in 700ms 200ms ease both; }
+.hero-sticker span { font-family: var(--font-display); font-size: 13px; font-style: italic; }
+.hero-sticker strong { font-family: var(--font-display); font-size: 18px; line-height: .95; }
+.hero-sticker svg { margin-top: 3px; color: var(--tomato); }
+.hero-scroll { position: absolute; bottom: 22px; left: clamp(24px, 9vw, 140px); display: inline-flex; align-items: center; gap: 8px; color: color-mix(in oklab, var(--cream) 75%, transparent); font-size: 8px; font-weight: 700; letter-spacing: 1.4px; text-decoration: none; }
+.featured-band { position: relative; display: grid; grid-template-columns: 180px minmax(0, 1fr) 76px; align-items: center; gap: 22px; min-height: 178px; padding: 24px clamp(24px, 5vw, 76px); background: var(--cream); }
+.featured-heading { display: flex; flex-direction: column; gap: 5px; }
+.featured-heading span, .cake-card-caption > span { color: var(--tomato); font-size: 8px; font-weight: 800; letter-spacing: 1.5px; }
+.featured-heading strong { font-family: var(--font-display); font-size: 25px; font-weight: 600; }
+.featured-track { display: flex; gap: 12px; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; }
+.featured-track::-webkit-scrollbar { display: none; }
+.featured-tile { position: relative; flex: 0 0 144px; height: 112px; overflow: hidden; padding: 0; border: 0; border-radius: 3px; background: var(--butter); cursor: pointer; }
+.featured-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 350ms ease; }
+.featured-tile:hover img { transform: scale(1.06); }
+.featured-tile > span { position: absolute; right: 5px; bottom: 5px; display: flex; align-items: center; gap: 4px; padding: 5px 7px; background: var(--cream); color: var(--tomato); font-size: 8px; font-weight: 700; }
+.featured-empty { display: flex; align-items: center; gap: 10px; color: var(--muted-foreground); font-family: var(--font-display); font-size: 17px; font-style: italic; }
+.featured-arrows { display: flex; gap: 7px; }
+.featured-arrows .h-9 { border-color: var(--border); color: var(--tomato); }
+.featured-arrows svg { width: 15px; height: 15px; }
+.catalogue-section { max-width: 1440px; margin: 0 auto; padding: 86px clamp(24px, 6.8vw, 104px) 102px; }
+.catalogue-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 34px; }
+.catalogue-heading h2, .birthday-copy h2 { color: var(--foreground); }
+.catalogue-heading h2 { margin: 9px 0 7px; font-family: var(--font-display); font-size: clamp(37px, 4vw, 53px); font-weight: 600; line-height: 1.08; }
+.catalogue-heading h2 em, .birthday-copy h2 em { color: var(--tomato); font-weight: 500; }
+.catalogue-heading p { margin: 0; color: var(--muted-foreground); font-size: 12px; }
+.catalogue-controls { display: flex; align-items: center; gap: 15px; }
+.catalogue-search { display: flex; align-items: center; gap: 8px; width: 190px; padding: 0 10px; border: 1px solid var(--border); border-radius: 3px; background: var(--card); color: var(--tomato); }
+.catalogue-search input { height: 38px; padding: 0; border: 0; background: transparent; box-shadow: none; font-size: 11px; }
+.catalogue-search input:focus-visible { outline: none; }
+.cake-count { color: var(--muted-foreground); font-size: 10px; white-space: nowrap; }
+.cake-grid { columns: 4 190px; column-gap: 18px; }
+.cake-card { display: inline-block; width: 100%; margin: 0 0 22px; break-inside: avoid; animation: rise-in 520ms ease both; }
+.cake-image-button { position: relative; display: block; width: 100%; overflow: hidden; padding: 0; border: 0; border-radius: 4px; background: var(--secondary); cursor: pointer; }
+.cake-card-0 .cake-image-button { aspect-ratio: 4 / 5; }
+.cake-card-1 .cake-image-button { aspect-ratio: 5 / 6; }
+.cake-card-2 .cake-image-button { aspect-ratio: 4 / 5.5; }
+.cake-card-3 .cake-image-button { aspect-ratio: 1 / 1.18; }
+.cake-image-button > img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 500ms cubic-bezier(.2,.7,.2,1); }
+.cake-image-button:hover > img { transform: scale(1.045); }
+.cake-featured { position: absolute; top: 9px; left: 9px; display: flex; align-items: center; gap: 5px; padding: 6px 8px; border-radius: 2px; background: var(--cream); color: var(--tomato); font-size: 8px; font-weight: 800; }
+.cake-image-open { position: absolute; right: 10px; bottom: 10px; display: grid; width: 34px; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--cream); color: var(--tomato); opacity: 0; transform: translateY(5px); transition: opacity 180ms ease, transform 180ms ease; }
+.cake-image-button:hover .cake-image-open, .cake-image-button:focus-visible .cake-image-open { opacity: 1; transform: translateY(0); }
+.cake-card-caption { display: grid; grid-template-columns: 1fr 30px; align-items: center; gap: 5px 10px; padding: 11px 2px 0; }
+.cake-card-caption > span { grid-column: 1; font-size: 7px; }
+.cake-card-caption strong { grid-column: 1; color: var(--foreground); font-family: var(--font-display); font-size: 16px; font-weight: 550; }
+.cake-card-caption button { grid-column: 2; grid-row: 1 / span 2; display: grid; width: 28px; height: 28px; place-items: center; border: 1px solid var(--border); border-radius: 50%; background: transparent; color: var(--tomato); cursor: pointer; transition: background 180ms ease, color 180ms ease; }
+.cake-card-caption button:hover { background: var(--tomato); color: var(--primary-foreground); }
+.catalogue-empty { display: flex; min-height: 300px; flex-direction: column; align-items: center; justify-content: center; border-top: 1px solid var(--border); text-align: center; }
+.empty-stamp { display: grid; width: 65px; height: 65px; place-items: center; border: 1px solid var(--tomato); border-radius: 50%; color: var(--tomato); transform: rotate(-9deg); }
+.catalogue-empty h3 { margin: 20px 0 6px; font-family: var(--font-display); font-size: 26px; }
+.catalogue-empty p { max-width: 340px; margin: 0 0 18px; color: var(--muted-foreground); font-size: 12px; line-height: 1.6; }
+.catalogue-empty .h-9 { gap: 8px; border-color: var(--tomato); color: var(--tomato); font-size: 11px; }
+.birthday-band { display: grid; grid-template-columns: minmax(300px, 1fr) minmax(340px, 1fr); align-items: center; gap: clamp(35px, 8vw, 128px); padding: 78px clamp(24px, 10vw, 150px); background: var(--butter); }
+.birthday-art { position: relative; min-height: 325px; }
+.birthday-art-photo { position: absolute; inset: 15px 20px 12px 0; overflow: hidden; border-radius: 2px; transform: rotate(-2deg); box-shadow: 0 16px 30px color-mix(in oklab, var(--foreground) 12%, transparent); }
+.birthday-art-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 29% center; }
+.birthday-sun { position: absolute; top: -16px; right: 3px; color: var(--tomato); font-size: 65px; line-height: 1; animation: slow-spin 30s linear infinite; }
+.birthday-seal { position: absolute; right: 1px; bottom: 4px; display: flex; width: 98px; height: 98px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border: 1px solid var(--tomato); border-radius: 50%; background: var(--cream); color: var(--tomato); transform: rotate(8deg); }
+.birthday-seal span { font-family: var(--font-display); font-size: 14px; font-style: italic; line-height: .95; text-align: center; }
+.birthday-copy h2 { margin: 17px 0 15px; font-size: clamp(42px, 5vw, 62px); }
+.birthday-copy > p { max-width: 430px; color: color-mix(in oklab, var(--foreground) 77%, transparent); font-size: 13px; line-height: 1.8; }
+.birthday-cta { min-height: 45px; gap: 9px; margin-top: 12px; background: var(--tomato); color: var(--primary-foreground); font-size: 11px; }
+.birthday-cta:hover, .birthday-submit:hover, .birthday-share:hover { background: color-mix(in oklab, var(--tomato) 90%, var(--foreground)); }
+.birthday-note { display: flex; align-items: center; gap: 6px; margin-top: 14px; color: var(--muted-foreground); font-size: 9px; }
+.shop-footer { display: flex; min-height: 100px; align-items: center; justify-content: space-between; gap: 20px; padding: 14px clamp(24px, 6vw, 90px); background: var(--cream); color: var(--muted-foreground); font-family: var(--font-display); font-size: 15px; font-style: italic; }
+.footer-brand img { width: 72px; height: 50px; object-fit: contain; mix-blend-mode: multiply; }
+.shop-footer > a:last-child { display: inline-flex; align-items: center; gap: 7px; color: var(--tomato); font-family: var(--font-sans); font-size: 10px; font-style: normal; font-weight: 700; }
+.cake-dialog, .birthday-dialog, .owner-dialog { max-height: min(90vh, 800px); overflow-y: auto; border-color: var(--border); background: var(--background); }
+.cake-dialog-image { width: 100%; max-height: 300px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; }
+.cake-dialog .eyebrow, .birthday-dialog .eyebrow, .owner-dialog .eyebrow { margin-bottom: 7px; }
+.cake-dialog [data-slot="dialog-title"], .birthday-dialog [data-slot="dialog-title"], .owner-dialog [data-slot="dialog-title"] { font-family: var(--font-display); font-size: 30px; font-weight: 600; line-height: 1.1; }
+.cake-dialog [data-slot="dialog-description"], .birthday-dialog [data-slot="dialog-description"], .owner-dialog [data-slot="dialog-description"] { line-height: 1.6; }
+.order-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.order-fields label, .birthday-form label { display: grid; gap: 7px; color: var(--foreground); font-size: 10px; font-weight: 700; }
+.order-fields select, .birthday-form select { width: 100%; min-width: 0; height: 40px; padding: 0 10px; border: 1px solid var(--border); border-radius: 3px; background: var(--card); color: var(--foreground); font: inherit; font-weight: 500; }
+.dialog-whatsapp, .birthday-share { min-height: 44px; background: var(--tomato); color: var(--primary-foreground); }
+.dialog-footnote { margin: -6px 0 0; color: var(--muted-foreground); font-size: 9px; text-align: center; }
+.birthday-form { display: grid; gap: 15px; margin-top: 20px; }
+.birthday-form input { height: 41px; border-color: var(--border); background: var(--card); font-size: 12px; }
+.birthday-prompt-preview { display: flex; gap: 9px; padding: 12px; border-left: 2px solid var(--tomato); background: var(--cream); color: var(--muted-foreground); font-size: 10px; line-height: 1.5; }
+.birthday-prompt-preview svg { flex: none; color: var(--tomato); }
+.birthday-submit { min-height: 44px; background: var(--tomato); color: var(--primary-foreground); }
+.birthday-created { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 18px 0 4px; text-align: center; }
+.created-heart { display: grid; width: 62px; height: 62px; place-items: center; border-radius: 50%; background: var(--rose); color: var(--tomato); animation: heart-pop 420ms ease both; }
+.birthday-created > .eyebrow { margin-top: 3px; }
+.birthday-created [data-slot="dialog-title"] { font-family: var(--font-display); font-size: 29px; font-weight: 600; }
+.birthday-created > p { margin: 0; color: var(--muted-foreground); font-size: 11px; }
+.created-link { display: flex; width: 100%; align-items: center; gap: 8px; padding: 6px 7px 6px 11px; border: 1px solid var(--border); background: var(--card); color: var(--tomato); }
+.created-link > span { flex: 1; overflow: hidden; color: var(--foreground); font-size: 10px; text-align: left; text-overflow: ellipsis; white-space: nowrap; }
+.created-link .h-9 { color: var(--tomato); }
+.birthday-share { align-self: stretch; }
+.birthday-share a { justify-content: center; }
+.owner-login { display: grid; gap: 12px; margin-top: 18px; }
+.owner-login input { height: 43px; border-color: var(--border); background: var(--card); }
+.owner-login button { min-height: 43px; background: var(--tomato); color: var(--primary-foreground); }
+.owner-tools { display: grid; gap: 18px; margin-top: 16px; }
+.upload-zone { display: flex; min-height: 188px; flex-direction: column; align-items: center; justify-content: center; gap: 9px; padding: 22px; border: 1px dashed color-mix(in oklab, var(--tomato) 55%, var(--border)); border-radius: 3px; background: var(--cream); color: var(--tomato); text-align: center; cursor: pointer; }
+.upload-zone > strong { color: var(--foreground); font-family: var(--font-display); font-size: 17px; }
+.upload-zone > span { max-width: 280px; color: var(--muted-foreground); font-size: 9px; line-height: 1.45; }
+.upload-zone .h-9 { min-height: 32px; height: 32px; margin-top: 3px; border-color: var(--tomato); color: var(--tomato); font-size: 10px; }
+.owner-list-heading { display: flex; justify-content: space-between; color: var(--foreground); font-size: 11px; }
+.owner-list-heading span { color: var(--muted-foreground); font-size: 9px; }
+.owner-cake-list { display: grid; max-height: 190px; gap: 6px; overflow-y: auto; }
+.owner-cake-row { display: grid; grid-template-columns: 42px 1fr 34px 34px; align-items: center; gap: 7px; padding: 5px; border-bottom: 1px solid var(--border); font-size: 10px; }
+.owner-cake-row img { width: 42px; height: 38px; object-fit: cover; border-radius: 2px; }
+.owner-cake-row button { color: var(--tomato); }
+.owner-cake-row button svg { width: 15px; height: 15px; }
+.owner-links { display: grid; gap: 7px; color: var(--foreground); font-size: 10px; }
+.owner-links > button { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px; border: 1px solid var(--border); background: var(--card); color: var(--tomato); text-align: left; cursor: pointer; }
+.owner-links > button span { color: var(--foreground); }
+.owner-signout { justify-self: start; color: var(--muted-foreground); font-size: 10px; }
+
+.birthday-page { min-height: 100svh; display: grid; grid-template-columns: minmax(0, 1fr) minmax(380px, .9fr); background: var(--cream); }
+.birthday-page-art { position: relative; min-height: 100svh; overflow: hidden; background: var(--foreground); }
+.birthday-page-art > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.birthday-page-art::after { position: absolute; inset: 0; background: linear-gradient(0deg, color-mix(in oklab, var(--foreground) 72%, transparent), transparent 70%); content: ""; }
+.birthday-page-mark { position: absolute; z-index: 1; top: 28px; left: 32px; width: 102px; height: 76px; object-fit: contain; mix-blend-mode: multiply; }
+.birthday-page-caption { position: absolute; z-index: 1; right: 9%; bottom: 9%; left: 9%; color: var(--cream); }
+.birthday-page-caption > span { color: var(--butter); font-size: 9px; font-weight: 800; letter-spacing: 1.7px; }
+.birthday-page-caption h1 { max-width: 590px; margin: 14px 0 10px; font-family: var(--font-display); font-size: clamp(42px, 5.8vw, 76px); font-weight: 600; line-height: 1; }
+.birthday-page-caption p { font-size: 13px; }
+.birthday-page-card { display: flex; min-height: 100svh; flex-direction: column; justify-content: center; padding: 54px clamp(27px, 7vw, 104px); }
+.birthday-page-card .eyebrow { align-self: flex-start; }
+.birthday-page-card h2 { margin: 12px 0 11px; color: var(--foreground); font-family: var(--font-display); font-size: clamp(30px, 3.6vw, 45px); font-weight: 600; line-height: 1.1; }
+.birthday-page-card > p { color: var(--muted-foreground); font-size: 12px; line-height: 1.75; }
+.birthday-page-quest { display: grid; gap: 12px; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border); }
+.birthday-page-quest h3 { margin: 0; color: var(--foreground); font-family: var(--font-display); font-size: 23px; font-weight: 550; }
+.birthday-page-quest > p { margin: -5px 0 0; color: var(--muted-foreground); font-size: 10px; line-height: 1.5; }
+.birthday-choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.birthday-choices button { display: flex; min-height: 74px; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 7px; border: 1px solid var(--border); border-radius: 3px; background: var(--card); color: var(--foreground); font-size: 9px; cursor: pointer; transition: border-color 180ms ease, transform 180ms ease, background 180ms ease; }
+.birthday-choices button:hover, .birthday-choices button.is-selected { border-color: var(--tomato); background: var(--rose); transform: translateY(-2px); }
+.birthday-choices button span:first-child { font-size: 19px; }
+.birthday-choices button:disabled { cursor: default; opacity: .65; }
+.birthday-question { display: grid; gap: 7px; color: var(--foreground); font-size: 10px; font-weight: 700; }
+.birthday-question input { height: 42px; border-color: var(--border); background: var(--card); font-size: 11px; }
+.birthday-answer-button { min-height: 42px; background: var(--tomato); color: var(--primary-foreground); font-size: 10px; }
+.birthday-answer-button:hover { background: color-mix(in oklab, var(--tomato) 90%, var(--foreground)); }
+.birthday-page-success { display: flex; align-items: center; gap: 8px; padding: 11px; border: 1px solid color-mix(in oklab, var(--leaf) 50%, var(--border)); background: color-mix(in oklab, var(--leaf) 12%, var(--cream)); color: var(--foreground); font-size: 10px; line-height: 1.5; }
+.birthday-page-success svg { flex: none; color: var(--leaf); }
+.birthday-page-share { display: inline-flex; align-items: center; gap: 7px; margin-top: 22px; color: var(--tomato); font-size: 10px; font-weight: 700; text-decoration: none; }
+.birthday-page-missing { min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 24px; background: var(--cream); text-align: center; }
+.birthday-page-missing img { width: 120px; height: 80px; object-fit: contain; mix-blend-mode: multiply; }
+.birthday-page-missing h1 { margin: 0; color: var(--foreground); font-family: var(--font-display); font-size: 36px; }
+.birthday-page-missing p { color: var(--muted-foreground); font-size: 12px; }
+.birthday-page-missing a { color: var(--tomato); font-size: 11px; font-weight: 700; }
+.birthday-response-toast { color: var(--tomato); }
+
+@keyframes rise-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float-in { from { opacity: 0; transform: translate(9px, 8px) rotate(2deg); } to { opacity: 1; transform: translate(0, 0) rotate(9deg); } }
+@keyframes slow-spin { to { transform: rotate(360deg); } }
+@keyframes heart-pop { 0% { transform: scale(.6); } 70% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+@media (max-width: 850px) {
+  .featured-band { grid-template-columns: 130px minmax(0, 1fr) 76px; gap: 14px; padding-inline: 22px; }
+  .featured-tile { flex-basis: 122px; height: 94px; }
+  .catalogue-section { padding-block: 68px 78px; }
+  .cake-grid { columns: 3 160px; column-gap: 14px; }
+  .birthday-band { grid-template-columns: minmax(250px, .9fr) 1fr; gap: 32px; padding-inline: 7vw; }
+  .birthday-art { min-height: 280px; }
+  .birthday-page { grid-template-columns: minmax(0, .9fr) minmax(350px, 1fr); }
+  .birthday-page-card { padding-inline: 38px; }
+}
+
+@media (max-width: 600px) {
+  .shop-header { height: 72px; padding-inline: 16px; }
+  .shop-brand { width: 105px; height: 67px; }
+  .shop-brand img { width: 86px; height: 58px; }
+  .shop-brand-caption { font-size: 6px; letter-spacing: .8px; }
+  .shop-nav { gap: 13px; font-size: 9px; }
+  .shop-nav > a:first-child { display: none; }
+  .shop-nav-whatsapp { gap: 4px; font-size: 0; }
+  .shop-nav-whatsapp svg { width: 17px; height: 17px; }
+  .owner-trigger { width: 32px; height: 32px; }
+  .owner-trigger svg { width: 17px; height: 17px; }
+  .cake-hero { min-height: 520px; align-items: flex-end; padding: 80px 23px 76px; }
+  .cake-hero-photo { object-position: 53% center; }
+  .cake-hero-shade { background: linear-gradient(0deg, color-mix(in oklab, var(--foreground) 86%, transparent), color-mix(in oklab, var(--foreground) 45%, transparent) 58%, color-mix(in oklab, var(--foreground) 12%, transparent)); }
+  .cake-hero h1 { margin-top: 17px; font-size: 53px; }
+  .cake-hero-copy p { max-width: 290px; font-size: 12px; }
+  .hero-actions { gap: 16px; margin-top: 23px; }
+  .hero-cta { min-height: 42px; padding-inline: 14px; font-size: 11px; }
+  .hero-whatsapp { gap: 5px; font-size: 10px; }
+  .hero-sticker { right: 17px; bottom: 110px; width: 82px; height: 82px; }
+  .hero-sticker span { font-size: 10px; }
+  .hero-sticker strong { font-size: 12px; }
+  .hero-sticker svg { width: 12px; height: 12px; }
+  .hero-scroll { bottom: 22px; left: 23px; font-size: 7px; }
+  .featured-band { grid-template-columns: 1fr 70px; gap: 10px; min-height: 160px; padding: 19px 16px; }
+  .featured-heading { grid-column: 1; grid-row: 1; }
+  .featured-heading strong { font-size: 21px; }
+  .featured-arrows { grid-column: 2; grid-row: 1; justify-self: end; }
+  .featured-arrows .h-9 { width: 30px; height: 30px; }
+  .featured-track { grid-column: 1 / -1; grid-row: 2; gap: 9px; margin-right: -16px; }
+  .featured-tile { flex-basis: 112px; height: 82px; }
+  .featured-empty { font-size: 14px; }
+  .catalogue-section { padding: 55px 17px 62px; }
+  .catalogue-heading { align-items: flex-start; flex-direction: column; gap: 18px; margin-bottom: 23px; }
+  .catalogue-heading h2 { margin-top: 7px; font-size: 39px; }
+  .catalogue-heading p { font-size: 10px; }
+  .catalogue-controls { width: 100%; justify-content: space-between; }
+  .catalogue-search { width: min(220px, 70vw); }
+  .cake-grid { columns: 2 135px; column-gap: 11px; }
+  .cake-card { margin-bottom: 16px; }
+  .cake-card-caption { grid-template-columns: 1fr 25px; gap: 4px 5px; padding-top: 8px; }
+  .cake-card-caption > span { font-size: 6px; letter-spacing: 1px; }
+  .cake-card-caption strong { font-size: 13px; }
+  .cake-card-caption button { width: 24px; height: 24px; }
+  .cake-card-caption button svg { width: 14px; height: 14px; }
+  .cake-featured { top: 6px; left: 6px; padding: 5px 6px; font-size: 7px; }
+  .cake-image-open { display: none; }
+  .catalogue-empty { min-height: 268px; padding-inline: 10px; }
+  .catalogue-empty h3 { font-size: 24px; }
+  .birthday-band { grid-template-columns: 1fr; gap: 28px; padding: 52px 22px 58px; }
+  .birthday-art { min-height: 245px; margin-inline: 3px 15px; }
+  .birthday-copy h2 { margin: 14px 0 12px; font-size: 47px; }
+  .birthday-copy > p { font-size: 11px; }
+  .birthday-cta { min-height: 42px; margin-top: 8px; font-size: 10px; }
+  .shop-footer { min-height: 82px; gap: 12px; padding-inline: 16px; }
+  .footer-brand img { width: 62px; height: 43px; }
+  .shop-footer > span { max-width: 145px; font-size: 12px; line-height: 1.25; }
+  .shop-footer > a:last-child { font-size: 9px; white-space: nowrap; }
+  .cake-dialog, .birthday-dialog, .owner-dialog { width: calc(100% - 24px); max-width: 440px; max-height: 88svh; padding: 19px; }
+  .cake-dialog-image { max-height: 235px; }
+  .cake-dialog [data-slot="dialog-title"], .birthday-dialog [data-slot="dialog-title"], .owner-dialog [data-slot="dialog-title"] { font-size: 26px; }
+  .order-fields { grid-template-columns: 1fr; }
+  .birthday-form { gap: 12px; margin-top: 15px; }
+  .birthday-page { display: flex; flex-direction: column; }
+  .birthday-page-art { min-height: 36svh; }
+  .birthday-page-mark { top: 12px; left: 15px; width: 78px; height: 58px; }
+  .birthday-page-caption { right: 18px; bottom: 19px; left: 20px; }
+  .birthday-page-caption > span { font-size: 7px; }
+  .birthday-page-caption h1 { margin: 8px 0 6px; font-size: 40px; }
+  .birthday-page-caption p { margin: 0; font-size: 10px; }
+  .birthday-page-card { min-height: 64svh; padding: 32px 23px 40px; }
+  .birthday-page-card h2 { font-size: 34px; }
+  .birthday-choices button { min-height: 68px; font-size: 8px; }
 }
