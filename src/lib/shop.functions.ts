@@ -127,7 +127,7 @@ export const setCakeFeatured = createServerFn({ method: "POST" })
     const db = await getPublicDb();
     const { data: saved, error } = await db.rpc("set_cake_featured", {
       _password: password,
-      _cake_id: data.cakeId,
+      _cake_id: data.cakeId ?? undefined,
       _is_featured: data.featured,
     });
     if (error || !saved) throw new Error("The cake could not be updated.");

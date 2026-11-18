@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft, Check, Gift, Heart, MessageCircle, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
@@ -9,7 +9,6 @@ import heroImage from "@/assets/toss-toast-cake-hero.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { getBirthdayLink, saveBirthdayAnswer } from "@/lib/shop.functions";
-import type { Tables } from "@/integrations/supabase/types";
 import { BIRTHDAY_RELATIONSHIPS, WHATSAPP_NUMBER } from "@/lib/shop-domain";
 
 const relationCopy: Record<(typeof BIRTHDAY_RELATIONSHIPS)[number], { greeting: string; question: string }> = {
@@ -36,8 +35,6 @@ const relationCopy: Record<(typeof BIRTHDAY_RELATIONSHIPS)[number], { greeting: 
 };
 
 type SavedAnswer = { choice: string; answer: string };
-type BirthdayRecord = Tables<"birthday_links">;
-
 function parseSavedAnswer(raw: string | null): SavedAnswer | null {
   if (!raw) return null;
   try {
@@ -75,11 +72,16 @@ function BirthdayPage() {
   const gift = Route.useLoaderData();
   const { slug } = Route.useParams();
   const saveAnswerFn = useServerFn(saveBirthdayAnswer);
+  const [origin, setOrigin] = useState("");
   const savedAnswer = parseSavedAnswer(gift?.game_answer ?? null);
   const [choice, setChoice] = useState(savedAnswer?.choice ?? "");
   const [answer, setAnswer] = useState(savedAnswer?.answer ?? "");
   const [isSaving, setIsSaving] = useState(false);
   const [hasSaved, setHasSaved] = useState(Boolean(savedAnswer));
+
+  useEffect(() => {
+    setOrigin(window.location.origin);
+  }, []);
 
   if (!gift) {
     return (
@@ -121,7 +123,7 @@ function BirthdayPage() {
     }
   }
 
-  const shareMessage = `Happy birthday, ${gift.recipient_name}! 🎂 ${gift.sender_name} made you a little surprise: ${window.location.origin}/birthday/${slug}`;
+  const shareMessage = `Happy birthday, ${gift.recipient_name}! 🎂 ${gift.sender_name} made you a little surprise: ${origin}/birthday/${slug}`;
 
   return (
     <main className="birthday-page">

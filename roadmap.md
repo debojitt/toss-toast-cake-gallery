@@ -1,0 +1,4 @@
+- [x] Build Toss & Toast cake catalogue and birthday-link experience.
+- [ ] Diagnose and repair bulk photo upload flow.
+- [ ] Verify persistent cake records and uploaded photo storage.
+- [ ] Validate homepage and birthday-link experience; run tests and commit changes.

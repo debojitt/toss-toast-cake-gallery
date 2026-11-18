@@ -36,6 +36,20 @@
       "when": 1794751626245,
       "tag": "0004_owner_tools_for_cakes_and_birthday_links",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1794985245185,
+      "tag": "0005_fix_cake_photo_upload_path_check",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1794985329871,
+      "tag": "0006_tighten_cake_upload_filename_check",
+      "breakpoints": true
     }
   ]
 }

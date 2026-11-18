@@ -5,7 +5,6 @@ import {
   ArrowDown,
   ArrowRight,
   CakeSlice,
-  Check,
   ChevronLeft,
   ChevronRight,
   CloudUpload,
@@ -306,7 +305,7 @@ function ShopPage() {
       </section>
 
       <section id="birthday" className="birthday-band">
-        <div className="birthday-art"><div className="birthday-art-photo" style={{ backgroundImage: `url(${heroImage})` }} /><span className="birthday-sun" aria-hidden="true">✳</span><div className="birthday-seal"><Heart size={23} fill="currentColor" /><span>made<br />for you</span></div></div>
+        <div className="birthday-art"><div className="birthday-art-photo"><img src={heroImage} alt="A lovingly decorated celebration cake" loading="lazy" width={1600} height={900} /></div><span className="birthday-sun" aria-hidden="true">✳</span><div className="birthday-seal"><Heart size={23} fill="currentColor" /><span>made<br />for you</span></div></div>
         <div className="birthday-copy">
           <span className="eyebrow"><Sparkles size={14} /> A LITTLE SURPRISE, JUST FOR THEM</span>
           <h2>Make their birthday<br /><em>feel like them.</em></h2>
