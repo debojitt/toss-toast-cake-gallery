@@ -151,7 +151,7 @@ export const removeCake = createServerFn({ method: "POST" })
     if (storageError) throw new Error("The photo could not be removed. Please try again.");
     const { data: hidden, error } = await db.rpc("hide_cake", {
       _password: password,
-      _cake_id: data.cakeId,
+      _cake_id: data.cakeId ?? undefined,
     });
     if (error || !hidden) throw new Error("The cake was removed, but its gallery entry could not be updated.");
     return { ok: true as const };
